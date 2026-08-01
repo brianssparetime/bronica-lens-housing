@@ -211,6 +211,8 @@ Three groups: the shared bayonet contract, the small camera-side artifacts (caps
   - all-achromat design (-135, +130, +150), pulling both modeled levers at once: a longer focal length, and the stop carried far back for deep astigmatism, to push the swirl-type crossing out to an inscribed circle. 
   - The crossing has no closed form in thin-lens math, so what this teaches waits on a roll of film beside v16b as the astigmatism-only control.
 
+- `releases/mount-ring` — the locking bayonet ring, in its own folder because it isn't tied to a lens. Its geometry comes from `spec.py` and `mating_disc_lock.py`, not the optical config, so one ring serves every housing above. The STL carries the ring, the lever, and their PETG supports as separate solids.
+
 
 ## Built with SCADwright
 
