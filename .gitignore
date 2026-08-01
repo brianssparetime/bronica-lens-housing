@@ -1,0 +1,49 @@
+# Generated geometry. Loose build products are disposable; the copies
+# under releases/ are the ones we keep.
+*.scad
+*.stl
+*.svg
+*.json
+
+!releases/**/*.scad
+!releases/**/*.stl
+!releases/**/*.svg
+!releases/**/*.json
+
+output/
+OLD/
+
+# Private notes
+design_docs/
+notes/
+guidance/
+
+# Claude Code
+CLAUDE.md
+CLAUDE.local.md
+.claude/
+.claude.json
+.claudeignore
+.mcp.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
+.python-version
+.env
+
+# macOS
+.DS_Store
