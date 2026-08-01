@@ -969,7 +969,7 @@ class LensHousing(Component):
         upper_label = "\n".join(
             [f"{design_name}:"]
             + [e.code for e in self.elements]
-            + [print_stamp()]
+            + [print_stamp(allow_dirty=ALLOW_DIRTY_STAMP)]
         )
         # Center the label block in the same clean band the optical diagram
         # uses: between the stop slot's subject-side edge and the subject-
@@ -1548,6 +1548,13 @@ NO_LOCKING_MECH = arg("no_locking_mech", default=False, type=bool)
 # arrow along the optical axis plus the element cross-sections); strokes
 # don't import. See `_optical_plan_cutter` for placement.
 OPTICAL_PLAN_SVG = arg("optical_plan", default=None, type=str)
+
+# CLI flag: stamp the barrel even when the working tree has uncommitted
+# changes. The stamp then carries a `-dirty` suffix, recording that the
+# commit alone won't reproduce the geometry. Off by default so a printed
+# part's SHA is always enough to recover the source that made it; turn it
+# on for throwaway test prints mid-iteration.
+ALLOW_DIRTY_STAMP = arg("allow_dirty", default=False, type=bool)
 
 # OpenSCAD imports an SVG's `width`/`height` (px) at this DPI, so the
 # imported geometry's mm extent is `px * 25.4 / SVG_IMPORT_DPI`. Verified

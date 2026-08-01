@@ -80,6 +80,8 @@ python lens_housing.py --from-json v13f.json --variant=print_shape_stops
 
 That JSON carries focal length, max aperture, FOV, per-element diameters, edge thicknesses and spacings, and the stop (depth plus hole diameters). Every dimension in the housing is derived from it. Without `--from-json` the script falls back to placeholder defaults, so always pass the config you want.
 
+Because the barrel is stamped with the current commit, a build refuses on a dirty tree; pass `--allow_dirty` for throwaway test prints and the stamp carries a `-dirty` suffix.
+
 Each config has a matching optical-plan SVG, a ray diagram of that lens. Pass it to engrave it on the barrel:
 
 ```
@@ -143,10 +145,10 @@ These live in `test_fit.py`, not `lens_housing.py`, and read the same JSON confi
 
 ```
 python test_fit.py --from-json v13f.json --variant=lower_housing_testfit
-python test_fit.py --from-json v13f.json --variant=lower_housing_testfit --no_locking_mech=1
+python test_fit.py --from-json v13f.json --variant=lower_housing_testfit --no_locking_mech
 ```
 
-`--no_locking_mech=1` drops the tab/notch and snap bead from the mating disc and prints a plain disc instead, which isolates whether the lock mechanism is causing a fit problem. The default keeps it, so the test piece exercises the same disc geometry the production housing does.
+`--no_locking_mech` drops the tab/notch and snap bead from the mating disc and prints a plain disc instead, which isolates whether the lock mechanism is causing a fit problem. The default keeps it, so the test piece exercises the same disc geometry the production housing does.
 
 | Variant                 | Purpose                                                      |
 | ------------------------- | -------------------------------------------------------------- |

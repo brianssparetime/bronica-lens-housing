@@ -82,7 +82,7 @@ class TestFitDesign(Design):
         # Lock mechanism (tabs + bead) — present by default so the
         # testfit piece exercises the same disc geometry the production
         # housing presents to the locking lens-mount ring. Pass
-        # `--no_locking_mech=1` to suppress both together (e.g. to test
+        # `--no_locking_mech` to suppress both together (e.g. to test
         # pre-lock-mech fit, or isolate which feature is binding).
         if not NO_LOCKING_MECH:
             if h.mating_disc_tabs is not None and h.mating_disc is not None:
