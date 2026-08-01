@@ -203,11 +203,11 @@ Three groups: the shared bayonet contract, the small camera-side artifacts (caps
   - A negative (-174mm) singlet front with an interior (+130mm) achromat and a (+150mm) PCX rear, spaced so third-order spherical cancels for a sharp center under deep field curvature. 
   - The film testing showed that the negative singlet's coma beats the astigmatic sign, so the corners smear radially as chevron tie-dye rather than the tangential swirl the metric predicted.
 
-- `releases/15a` — 90mm f/3.1 Petzval-ish
+- `releases/15a` — 90mm f/3.1 retrofocus
   - built entirely from achromats (-135, +125, +127), with a negative achromat in front to carry swirl direction without the coma a singlet brings. 
   - Film showed the swirl-type fix worked, but only partly. The field is three regimes: sharp center, tangential swirl ring, and non-chevron tiedye/radial corners going into the edges and corners.
 
-- `releases/16c` — 98mm f/3.2 
+- `releases/16c` — 98mm f/3.2 retrofocus
   - all-achromat design (-135, +130, +150), pulling both modeled levers at once: a longer focal length, and the stop carried far back for deep astigmatism, to push the swirl-type crossing out to an inscribed circle. 
   - The crossing has no closed form in thin-lens math, so what this teaches waits on a roll of film beside v16b as the astigmatism-only control.
 
