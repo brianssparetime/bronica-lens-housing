@@ -2,6 +2,14 @@
 
 A working collection of 3D-printed parts for the Bronica S/S2/S2A/EC/EC-TL camera system, all built in [SCADwright](https://github.com/brianssparetime/SCADwright).
 
+
+<p align="center">
+  <img src="img-vid/IMG_2742%20Large%20angle.jpeg" alt="mounted" width="640">
+</p>
+
+*Completed lens mounted on my EC-TL*
+
+
 ## Goal
 
 I wanted a swirly, roughly 100mm f/2.8 lens for the Bronica S2, built from $5-7 surplus elements. 
