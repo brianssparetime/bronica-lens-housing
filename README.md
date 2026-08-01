@@ -32,7 +32,7 @@ This design meets nearly all of that. Rather than loading from the muzzle, it sp
   <img src="img-vid/IMG_2834%20Large%20all%20three%20hero.jpeg" alt="Three printed lens housings with mount rings, stops, and covers" width="640">
 </p>
 
-*Three builds of the housing, with the parts that go around them: locking mount rings, the C-clip aperture slot cover, stop discs and caps. The open halves show the element stack seated in its holders. The closed barrels carry the build stamp on one side, design name over element codes over commit hash, and the engraved optical plan on the other.*
+*Three builds of the housing, with the parts that go around them: locking mount rings, the C-clip aperture slot cover, stop discs and caps. The open halves show the element stack seated in its holders. The closed barrels show the build stamp on one side, design name over element codes over commit hash, and the engraved optical plan on the other.*
 
 ## What's in the collection
 
@@ -57,12 +57,12 @@ This design meets nearly all of that. Rather than loading from the muzzle, it sp
 - **Two halves, snap-fit and light-tight**, split along the optical axis by a stepped lap joint (`lap_split_x`).
 - **Optical elements precisely positioned** in `ElementHolder`s sized to each element's diameter, edge thickness, and spacing.
 - **Precise, stepped, recessed housing** that narrows in three steps (outer → mid → inner), with a bore-side fillet ring at each step, following the profile inside the S2's mount barrel.
-- **Locking bayonet mount** through `lens_mount_locking_ring`: integrated pillow blocks carry a sewing-pin-pivoted curved lever whose tooth swings into the rotation channel. The torsion spring is the one part I haven't solved.
+- **Locking bayonet mount** through `lens_mount_locking_ring`: integrated pillow blocks hold a sewing-pin-pivoted curved lever whose tooth swings into the rotation channel. The torsion spring is the one part I haven't solved.
 - **Fits both helicoids.** The S2A and EC-TL differ subtly, and the mount skirt in `spec.py` is sized to clear both.
 - **Waterhouse stops**, one disc per aperture in the config, a full stop apart. Each disc is a paddle: the small semicircle sits in the bore as the aperture plate, the large one fills the wall slot, so stops swap through the slot without opening the housing.
 - **Clip-on aperture cover** (`ApertureCover`) closes the stop slot against stray light. A C-clip wrapping past 180° snaps over center, with a pry tab at each end.
 - **Clip-on hood** (`LensHood`) sized off the housing's hood-base angle and front-element diameter, so its flare follows the field of view in the optical plan.
-- **Clip-on lens cap** (`LensCap`) shares the hood's coupler and snap groove, so the two seat identically, but carries a flat lid in place of the funnel.
+- **Clip-on lens cap** (`LensCap`) shares the hood's coupler and snap groove, so the two seat identically, but has a flat lid in place of the funnel.
 - **Funnel-widened upper barrel** when the front element is wider than the bayonet bore.
 - **Tab/notch alignment** between the housing's mating disc and the locking ring, so once seated the housing can't rotate relative to the ring, plus a snap-fit bead that stops it pulling off.
 - **Front fillet rim with text** (`TruncFilletRing`) wrapping the aperture, with the focal length and aperture engraved into its slanted face, e.g. `BRIOTAR 101mm f/2.9`.
@@ -86,9 +86,9 @@ python lens_housing.py --from-json v13f.json --variant=print_stops
 python lens_housing.py --from-json v13f.json --variant=print_shape_stops
 ```
 
-That JSON carries focal length, max aperture, FOV, per-element diameters, edge thicknesses and spacings, and the stop (depth plus hole diameters). Every dimension in the housing is derived from it. Without `--from-json` the script falls back to placeholder defaults, so always pass the config you want.
+That JSON holds focal length, max aperture, FOV, per-element diameters, edge thicknesses and spacings, and the stop (depth plus hole diameters). Every dimension in the housing is derived from it. Without `--from-json` the script falls back to placeholder defaults, so always pass the config you want.
 
-Because the barrel is stamped with the current commit, a build refuses on a dirty tree; pass `--allow_dirty` for throwaway test prints and the stamp carries a `-dirty` suffix.
+Because the barrel is stamped with the current commit, a build refuses on a dirty tree; pass `--allow_dirty` for throwaway test prints and the stamp gets a `-dirty` suffix.
 
 Each config has a matching optical-plan SVG, a ray diagram of that lens. Pass it to engrave it on the barrel:
 
@@ -149,7 +149,7 @@ scadwright preview lens_housing.py --from-json v13f.json --variant=display
 
 I wasted a lot of filament printing full articles before I stopped and built small testers. Printing the whole mount ring makes it hard to see how far off the lug grooves are in depth or distance from the flange. A part that tests one fit answers that in twenty minutes instead of a whole plate.
 
-These live in `test_fit.py`, not `lens_housing.py`, and read the same JSON config, so a fit verified here predicts a fit in the full housing. I carried the approach further on the [Pentacon 6 mount](https://github.com/brianssparetime/SCADwright/tree/master/examples/pentacon-six-mount) in SCADwright's examples, which has a cleaner set of testers than this repo does:
+These live in `test_fit.py`, not `lens_housing.py`, and read the same JSON config, so a fit verified here predicts a fit in the full housing. I took the approach further on the [Pentacon 6 mount](https://github.com/brianssparetime/SCADwright/tree/master/examples/pentacon-six-mount) in SCADwright's examples, which has a cleaner set of testers than this repo does:
 
 ```
 python test_fit.py --from-json v13f.json --variant=lower_housing_testfit
@@ -186,7 +186,7 @@ Three groups: the shared bayonet contract, the small camera-side artifacts (caps
   - `lens_mount_locking_ring.py` — `LensMount` extended with two integrated pillow-block bosses on its OD wall and a separate pivot lever pinned through them. The lever's chisel tooth drops into the bayonet rotation channel and locks the lens onto the camera. The lens-housing's mating disc snap-fits inside the ring's bore.
   - `mating_disc_lock.py` — shared spec for the interface between the lens housing and the locking ring's tab/notch. Kept in its own module so a part can import the spec without pulling in either Design class (avoiding `print`-variant collisions).
   - `lap_joint.py` — generic stepped lap-joint transforms (`lap_split_x`, `lap_splay`) used to halve the housing for printing. No project-specific dimensions.
-  - `test_fit.py` — diagnostic Design holding the trial-print variants (`lower_housing_testfit`, `element_grippers`, `half_housing`, `mount_ring_slice`). Reads the same optical config as `lens_housing.py`, so a fit confirmed here carries over to the full housing.
+  - `test_fit.py` — diagnostic Design holding the trial-print variants (`lower_housing_testfit`, `element_grippers`, `half_housing`, `mount_ring_slice`). Reads the same optical config as `lens_housing.py`, so a fit confirmed here holds in the full housing.
 
 
 ## Releases
@@ -197,7 +197,7 @@ Three groups: the shared bayonet contract, the small camera-side artifacts (caps
   <img src="img-vid/IMG_2838%20Large%20%20spread%20out%20in%20parts.jpeg" alt="Three housing designs opened up, labeled 101mm f/2.9, 90mm f/3.1, and 98mm f/3.2" width="640">
 </p>
 
-*The three designs below, labeled on the front rim: 101mm f/2.9, 90mm f/3.1, and 98mm f/3.2. Each open half shows its element stack, with the achromats' cemented surfaces catching yellow. The barrel at top left carries the optical-plan engraving; the stops at top right sit ready to drop through the slot.*
+*The three designs below, labeled on the front rim: 101mm f/2.9, 90mm f/3.1, and 98mm f/3.2. Each open half shows its element stack, with the achromats' cemented surfaces catching yellow. The barrel at top left shows the optical-plan engraving; the stops at top right sit ready to drop through the slot.*
 
 - `releases/13f` and `releases/14a` — 101mm f/2.9 retrofocus
   - A negative (-174mm) singlet front with an interior (+130mm) achromat and a (+150mm) PCX rear, spaced so third-order spherical cancels for a sharp center under deep field curvature. 
@@ -211,14 +211,19 @@ Three groups: the shared bayonet contract, the small camera-side artifacts (caps
   - all-achromat design (-135, +130, +150), pulling both modeled levers at once: a longer focal length, and the stop carried far back for deep astigmatism, to push the swirl-type crossing out to an inscribed circle. 
   - The crossing has no closed form in thin-lens math, so what this teaches waits on a roll of film beside v16b as the astigmatism-only control.
 
-- `releases/mount-ring` — the locking bayonet ring, in its own folder because it isn't tied to a lens. Its geometry comes from `spec.py` and `mating_disc_lock.py`, not the optical config, so one ring serves every housing above. The STL carries the ring, the lever, and their PETG supports as separate solids.
+- `releases/mount-ring` — the bayonet rings, in their own folder because they aren't tied to a lens. Their geometry comes from `spec.py`, not the optical config, so one ring fits every housing above.
+  - `lens_mount_locking_ring-print` — the locking ring the housings mount with. Ring, pivot lever, and their PETG supports as separate solids.
+  - `lens_mount_ring-lens` — the bare ring alone, no lever and no supports. Import this one to fuse a Bronica mount onto your own part.
+  - `lens_mount_ring-lens_print` — the same bare ring with supports, laid out to print on its own.
+
+The bare ring imports sitting on the bed rather than on the origin, so center it on the optical axis before fusing: it spans 68.1 mm square from a 1.5 mm corner, which is `translate([-35.55, -35.55, 0])`.
 
 
 ## Built with SCADwright
 
 OpenSCAD got progressively annoying on the first attempt, less on features than on project management. Modules can't share attributes or read from each other, so mating parts either duplicate dimensions or rely on fragile workarounds to avoid it. [SCADwright](https://github.com/brianssparetime/SCADwright) is the OpenSCAD emitter I built to fix that, and this housing is its most demanding example: eleven source files using nearly every framework feature.
 
-The ones that carried the most weight here:
+The ones that did the most work here:
 
 - [`Component`](https://github.com/brianssparetime/SCADwright/blob/master/docs/components.md) with [`equations`](https://github.com/brianssparetime/SCADwright/blob/master/docs/components.md#parameters-equations) — each part declares its relationships and constraints once, and the framework solves for whatever you didn't supply
 - [`Spec`](https://github.com/brianssparetime/SCADwright/blob/master/docs/specs_and_adjustments.md) with adjustments — the bayonet contract in `spec.py`, read by every mating part
