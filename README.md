@@ -191,7 +191,7 @@ Three groups: the shared bayonet contract, the small camera-side artifacts (caps
 
 ## Releases
 
-`releases/` contains the files for versions that I've actually printed. Each folder has the SCAD and STL for whatever parts that version produced, plus the JSON config and optical-plan SVG they were built from, so an old print can be rebuilt without digging the settings out of history.
+[`releases/`](releases) contains the files for versions that I've actually printed. Each folder has the SCAD and STL for whatever parts that version produced, plus the JSON config and optical-plan SVG they were built from, so an old print can be rebuilt without digging the settings out of history.
 
 <p align="center">
   <img src="img-vid/IMG_2838%20Large%20%20spread%20out%20in%20parts.jpeg" alt="Three housing designs opened up, labeled 101mm f/2.9, 90mm f/3.1, and 98mm f/3.2" width="640">
@@ -199,22 +199,22 @@ Three groups: the shared bayonet contract, the small camera-side artifacts (caps
 
 *The three designs below, labeled on the front rim: 101mm f/2.9, 90mm f/3.1, and 98mm f/3.2. Each open half shows its element stack, with the achromats' cemented surfaces catching yellow. The barrel at top left shows the optical-plan engraving; the stops at top right sit ready to drop through the slot.*
 
-- `releases/13f` and `releases/14a` — 101mm f/2.9 retrofocus
+- [`releases/13f`](releases/13f) and [`releases/14a`](releases/14a) — 101mm f/2.9 retrofocus
   - A negative (-174mm) singlet front with an interior (+130mm) achromat and a (+150mm) PCX rear, spaced so third-order spherical cancels for a sharp center under deep field curvature. 
   - The film testing showed that the negative singlet's coma beats the astigmatic sign, so the corners smear radially as chevron tie-dye rather than the tangential swirl the metric predicted.
 
-- `releases/15a` — 90mm f/3.1 retrofocus
+- [`releases/15a`](releases/15a) — 90mm f/3.1 retrofocus
   - built entirely from achromats (-135, +125, +127), with a negative achromat in front to carry swirl direction without the coma a singlet brings. 
   - Film showed the swirl-type fix worked, but only partly. The field is three regimes: sharp center, tangential swirl ring, and non-chevron tiedye/radial corners going into the edges and corners.
 
-- `releases/16c` — 98mm f/3.2 retrofocus
+- [`releases/16c`](releases/16c) — 98mm f/3.2 retrofocus
   - all-achromat design (-135, +130, +150), pulling both modeled levers at once: a longer focal length, and the stop carried far back for deep astigmatism, to push the swirl-type crossing out to an inscribed circle. 
   - The crossing has no closed form in thin-lens math, so what this teaches waits on a roll of film beside v16b as the astigmatism-only control.
 
-- `releases/mount-ring` — the bayonet rings, in their own folder because they aren't tied to a lens. Their geometry comes from `spec.py`, not the optical config, so one ring fits every housing above.
-  - `lens_mount_locking_ring-print` — the locking ring the housings mount with. Ring, pivot lever, and their PETG supports as separate solids.
-  - `lens_mount_ring-lens` — the bare ring alone, no lever and no supports. Import this one to fuse a Bronica mount onto your own part.
-  - `lens_mount_ring-lens_print` — the same bare ring with supports, laid out to print on its own.
+- [`releases/mount-ring`](releases/mount-ring) — the bayonet rings, in their own folder because they aren't tied to a lens. Their geometry comes from `spec.py`, not the optical config, so one ring fits every housing above.
+  - [`lens_mount_locking_ring-print.stl`](releases/mount-ring/lens_mount_locking_ring-print.stl) — the locking ring the housings mount with. Ring, pivot lever, and their PETG supports as separate solids.
+  - [`lens_mount_ring-lens.stl`](releases/mount-ring/lens_mount_ring-lens.stl) — the bare ring alone, no lever and no supports. Import this one to fuse a Bronica mount onto your own part.
+  - [`lens_mount_ring-lens_print.stl`](releases/mount-ring/lens_mount_ring-lens_print.stl) — the same bare ring with supports, laid out to print on its own.
 
 The bare ring imports sitting on the bed rather than on the origin, so center it on the optical axis before fusing: it spans 68.1 mm square from a 1.5 mm corner, which is `translate([-35.55, -35.55, 0])`.
 
