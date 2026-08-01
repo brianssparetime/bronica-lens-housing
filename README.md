@@ -7,7 +7,7 @@ A working collection of 3D-printed parts for the Bronica S/S2/S2A/EC/EC-TL camer
   <img src="img-vid/IMG_2742%20Large%20angle.jpeg" alt="mounted" width="640">
 </p>
 
-*Completed lens mounted on my EC-TL*
+*Completed lens mounted on my EC-TL.  I'm better at optical engineering and 3d modeling than at painting things*
 
 
 ## Goal
