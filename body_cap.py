@@ -58,16 +58,18 @@ class BodyCap(LensMount):
 class BodyCapSupports(LensMountSupports, BodyCap):
     """Modeled PETG supports for printing a `BodyCap` with a PLA part.
 
-    Same as `LensMountSupports` but the central pillar starts at
-    `disc_thk` instead of z=0, so the PETG support doesn't collide
-    with the PLA disc that fills the bore from z=0 to z=`disc_thk`.
-    The pillar's bottom layer prints directly on the disc's top face
-    — PETG-on-PLA forms a natural release boundary, no fusion.
+    Same as `LensMountSupports` but the central pillar starts
+    `support_air_gap` above `disc_thk` instead of at z=0, so the PETG
+    support clears the PLA disc that fills the bore from z=0 to
+    z=`disc_thk`. The gap keeps the pillar and the cap as separate
+    solids in the combined STL; a pillar sitting flush on the disc
+    fuses with it in the CSG union and the slicer can't split the two.
+    The gap is under one layer, so the pillar still prints on the disc.
 
     Print orientation and workflow are unchanged from `LensMountSupports`.
     """
 
-    support_pillar_z_bottom = BodyCap.disc_thk
+    support_pillar_z_bottom = BodyCap.disc_thk + LensMountSupports.support_air_gap
 
 
 class BronicaS2BodyCap(BodyCap, BronicaS2LensMount):
