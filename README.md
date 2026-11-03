@@ -193,6 +193,8 @@ Three groups: the shared bayonet contract, the small camera-side artifacts (caps
 
 [`releases/`](releases) contains the files for versions that I've actually printed. Each folder has the SCAD and STL for whatever parts that version produced, plus the JSON config and optical-plan SVG they were built from, so an old print can be rebuilt without digging the settings out of history.
 
+The optical designs themselves, the element choices and the modeling behind the notes below, live in a separate repo: [bronica_lens_design](https://github.com/brianssparetime/bronica_lens_design). The JSON config and optical-plan SVG in each folder are what that work hands to the housing.
+
 <p align="center">
   <img src="img-vid/IMG_2838%20Large%20%20spread%20out%20in%20parts.jpeg" alt="Three housing designs opened up, labeled 101mm f/2.9, 90mm f/3.1, and 98mm f/3.2" width="640">
 </p>
